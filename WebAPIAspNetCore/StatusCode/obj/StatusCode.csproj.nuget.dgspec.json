@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\WebAPIAspNetCore\\StatusCode\\StatusCode.csproj": {}
+    "C:\\Users\\beatrizp\\Desktop\\aula-autenticacao\\WebAPIAspNetCore\\StatusCode\\StatusCode.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\WebAPIAspNetCore\\StatusCode\\StatusCode.csproj": {
+    "C:\\Users\\beatrizp\\Desktop\\aula-autenticacao\\WebAPIAspNetCore\\StatusCode\\StatusCode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\WebAPIAspNetCore\\StatusCode\\StatusCode.csproj",
+        "projectUniqueName": "C:\\Users\\beatrizp\\Desktop\\aula-autenticacao\\WebAPIAspNetCore\\StatusCode\\StatusCode.csproj",
         "projectName": "StatusCode",
-        "projectPath": "C:\\Projetos\\WebAPIAspNetCore\\StatusCode\\StatusCode.csproj",
-        "packagesPath": "C:\\Users\\wssan\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\WebAPIAspNetCore\\StatusCode\\obj\\",
+        "projectPath": "C:\\Users\\beatrizp\\Desktop\\aula-autenticacao\\WebAPIAspNetCore\\StatusCode\\StatusCode.csproj",
+        "packagesPath": "C:\\Users\\beatrizp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\beatrizp\\Desktop\\aula-autenticacao\\WebAPIAspNetCore\\StatusCode\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\wssan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\beatrizp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,6 +44,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.7, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.7, )"

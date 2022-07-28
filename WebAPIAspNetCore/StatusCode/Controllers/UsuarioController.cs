@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StatusCode.Models;
+using StatusCode.Services;
 
 namespace StatusCode.Controllers
 {
@@ -10,33 +12,50 @@ namespace StatusCode.Controllers
     {
         private SistemaContext DbSistema = new SistemaContext();
 
-        [HttpGet]
-        public void RequererTodos()
+        [HttpPost]
+        [Route("Cadastrar")]
+        public ActionResult<Usuario> Cadastrar(Usuario usuario)
         {
+            if (usuario == null)
+                return BadRequest();
 
-        }
-
-        [HttpGet]
-        public void RequererUmPelaId(int Id)
-        {
-
+            DbSistema.Usuarios.Add(usuario);
+            DbSistema.SaveChanges();
+            return Ok(usuario);
         }
 
         [HttpPost]
-        public void PublicarUm(Usuario Usuario)
+        [Route("autenticar")]
+        [AllowAnonymous]
+        public ActionResult<dynamic> Autenticar(Credencial credencial)
         {
-        
+            var usuario = DbSistema.Usuarios.Where(Usuario => Usuario.Username == credencial.Username && Usuario.Senha == credencial.Senha).FirstOrDefault();
+
+
+            if (usuario == null)
+            {
+                return NotFound(new { menseger = "Usuário ou senha incorretos." });
+            }
+            else
+            {
+                var chaveToken = String.Empty;
+
+                return new { token = chaveToken };
+            }
+            var nome = usuario.Nome;
+            var userName = usuario.Username;
+            var sobrenome = usuario.Sobrenome;
+
+            return (nome, sobrenome, userName);
+
         }
 
-        [HttpDelete]
-        public void DeletarUmPelaId(int Id, Usuario Usuario)
+        [HttpGet]
+        [Route("Usuarios")]
+        [Authorize]
+        public ActionResult<Usuario> UsuariosCadastrados()
         {
-
-        }
-
-        [HttpPut]
-        public void SubstituirUmPelaId(int Id, Usuario Usuario)
-        {
+            return Ok(DbSistema.Usuarios.ToList());
 
         }
     }

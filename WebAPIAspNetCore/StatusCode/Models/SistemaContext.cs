@@ -4,7 +4,7 @@ namespace StatusCode.Models
 {
     public class SistemaContext: DbContext
     {
-        public DbSet<Usuario>? Usuario { get; set; }
+        public DbSet<Usuario>? Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder Modelagem)
         {
