@@ -38,25 +38,16 @@ namespace StatusCode.Controllers
             }
             else
             {
-                var chaveToken = String.Empty;
-
-                return new { token = chaveToken };
+                var token = TokenService.GerarChaveToken(usuario);
+                return new { token = token, id = usuario.Id, nome = usuario.Nome, sobrenome = usuario.Sobrenome, username = usuario.Username };
             }
-            var nome = usuario.Nome;
-            var userName = usuario.Username;
-            var sobrenome = usuario.Sobrenome;
-
-            return (nome, sobrenome, userName);
-
         }
-
         [HttpGet]
         [Route("Usuarios")]
         [Authorize]
         public ActionResult<Usuario> UsuariosCadastrados()
         {
             return Ok(DbSistema.Usuarios.ToList());
-
         }
     }
 }
