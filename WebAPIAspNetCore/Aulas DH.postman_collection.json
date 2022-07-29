@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "7917ffcd-bd9a-4100-87ff-6be0b80b4891",
+		"name": "Aulas DH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21278275"
+	},
+	"item": [
+		{
+			"name": "Aula_Autenticação",
+			"item": [
+				{
+					"name": "CadastrarUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Iasmim\",\r\n  \"sobrenome\": \"Oliveira\",\r\n  \"username\": \"Vivanco\",\r\n  \"senha\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7044/Api/Usuario/Cadastrar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7044",
+							"path": [
+								"Api",
+								"Usuario",
+								"Cadastrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AutenticarUsuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"string\",\r\n  \"senha\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7044/Api/Usuario/autenticar",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7044",
+							"path": [
+								"Api",
+								"Usuario",
+								"autenticar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ApresentarUsuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE2NTkwOTMyMjQsImV4cCI6MTY1OTA5NjgyNCwiaWF0IjoxNjU5MDkzMjI0fQ.lcbQW4Lmt8oZ-a6bBtZ9U-dV1_RezdfpAPDzUSD94Uc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7044/Api/Usuario/Usuarios",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7044",
+							"path": [
+								"Api",
+								"Usuario",
+								"Usuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

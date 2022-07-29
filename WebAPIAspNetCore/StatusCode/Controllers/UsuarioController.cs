@@ -6,7 +6,7 @@ using StatusCode.Services;
 
 namespace StatusCode.Controllers
 {
-    [Route("v1/[controller]")]
+    [Route("Api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
@@ -29,7 +29,7 @@ namespace StatusCode.Controllers
         [AllowAnonymous]
         public ActionResult<dynamic> Autenticar(Credencial credencial)
         {
-            var usuario = DbSistema.Usuarios.Where(Usuario => Usuario.Username == credencial.Username && Usuario.Senha == credencial.Senha).FirstOrDefault();
+            var usuario = DbSistema.Usuarios.Where(usuario => usuario.Username == credencial.Username && usuario.Senha == credencial.Senha).FirstOrDefault();
 
 
             if (usuario == null)
@@ -38,14 +38,15 @@ namespace StatusCode.Controllers
             }
             else
             {
-                var token = TokenService.GerarChaveToken(usuario);
+                var token = TokenService.GerarChaveToken();
                 return new { token = token, id = usuario.Id, nome = usuario.Nome, sobrenome = usuario.Sobrenome, username = usuario.Username };
             }
         }
+
         [HttpGet]
         [Route("Usuarios")]
         [Authorize]
-        public ActionResult<Usuario> UsuariosCadastrados()
+        public ActionResult<Usuario> ListarUsuarios()
         {
             return Ok(DbSistema.Usuarios.ToList());
         }
